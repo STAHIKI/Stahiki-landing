@@ -7,6 +7,7 @@ Stahiki is a modern web application for creating intelligent digital twins using
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preference: Exact GitHub replica - colors, themes, animations, fonts, and layout structure.
 
 ## System Architecture
 

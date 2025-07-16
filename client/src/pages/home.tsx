@@ -5,21 +5,26 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { 
-  Rocket, 
-  Brain, 
-  ChartLine, 
-  Building, 
-  Zap, 
+  ArrowRight,
+  Code,
+  GitBranch,
+  Users,
+  Zap,
+  Shield,
+  Globe,
+  Star,
+  Play,
+  ChevronRight,
+  Check,
+  Building,
   Leaf,
-  Github,
-  Twitter,
-  Linkedin,
-  Layers,
-  Gamepad2,
+  Cog,
+  BarChart3,
   Network,
   Database,
   Clock,
-  Target
+  Target,
+  Github
 } from "lucide-react";
 import dashboardImage from "@assets/pr1_1752699196392.png";
 
@@ -28,58 +33,73 @@ export default function Home() {
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement email submission
     console.log("Email submitted:", email);
   };
+
+  const logos = [
+    "Shopify", "EY", "Figma", "Duolingo", "New York Times", 
+    "Mercado Libre", "American Airlines", "Ford", "Mercedes Benz", 
+    "Société Générale", "Vodafone", "Philips", "SAP", "Infosys", "Spotify"
+  ];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b border-border">
+      <nav className="sticky top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-[hsl(var(--stahiki-primary))] to-[hsl(var(--stahiki-secondary))] rounded-lg flex items-center justify-center">
-                  <div className="w-4 h-4 bg-white rounded-sm"></div>
-                </div>
-                <span className="text-xl font-bold">Stahiki</span>
+            <div className="flex items-center space-x-8">
+              <div className="flex items-center space-x-3">
+                <Github className="w-8 h-8" />
+                <span className="text-xl font-semibold">Stahiki</span>
+              </div>
+              
+              <div className="hidden md:flex items-center space-x-6 text-sm">
+                <a href="#" className="text-foreground hover:text-primary transition-colors">Product</a>
+                <a href="#" className="text-foreground hover:text-primary transition-colors">Solutions</a>
+                <a href="#" className="text-foreground hover:text-primary transition-colors">Open Source</a>
+                <a href="#" className="text-foreground hover:text-primary transition-colors">Pricing</a>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
+              <div className="hidden md:flex items-center space-x-2 text-sm">
+                <Button variant="ghost" size="sm">
+                  Search or jump to...
+                </Button>
+                <Button variant="ghost" size="sm">
+                  Sign in
+                </Button>
+              </div>
               <ThemeToggle />
-              <Button className="bg-[hsl(var(--stahiki-primary))] hover:bg-[hsl(var(--stahiki-primary))]/90">
-                Request Access
-              </Button>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-[hsl(var(--stahiki-light))] to-background dark:from-background dark:to-muted/20 overflow-hidden">
+      <section className="relative pt-16 pb-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <div className="text-center max-w-4xl mx-auto">
             <motion.h1 
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Build Intelligent Digital Twins<br/>
-              <span className="bg-gradient-to-r from-[hsl(var(--stahiki-primary))] to-[hsl(var(--stahiki-secondary))] bg-clip-text text-transparent">
-                with AI, Instantly
+              Build and ship digital twins on a single,{" "}
+              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                collaborative platform
               </span>
             </motion.h1>
             
             <motion.p 
-              className="text-xl sm:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
+              className="text-xl sm:text-2xl text-muted-foreground mb-12 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Stahiki is an AI-native platform that lets you simulate, monitor, and automate physical systems — from smart cities to farms — in hours, not months.
+              Join the world's most widely adopted AI-powered developer platform.
             </motion.p>
             
             <motion.div 
@@ -88,234 +108,139 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <form onSubmit={handleEmailSubmit} className="flex bg-card rounded-lg shadow-lg border border-border p-2 w-full max-w-md">
+              <div className="flex bg-card rounded-md border border-border overflow-hidden w-full max-w-md">
                 <Input 
                   type="email" 
                   placeholder="Enter your email address" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none"
                   required
                 />
                 <Button 
                   type="submit"
-                  className="bg-[hsl(var(--stahiki-primary))] hover:bg-[hsl(var(--stahiki-primary))]/90 px-6"
+                  className="github-primary-button text-white px-6 rounded-none border-0"
+                  onClick={handleEmailSubmit}
                 >
-                  Request Early Access
+                  Sign up for Stahiki
                 </Button>
-              </form>
+              </div>
+              
+              <Button 
+                variant="outline" 
+                className="github-button border-border"
+              >
+                Try Stahiki Copilot
+                <Play className="ml-2 w-4 h-4" />
+              </Button>
             </motion.div>
           </div>
         </div>
         
-        {/* Floating UI Mockups */}
+        {/* Floating UI Animation */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* Main Dashboard Mockup */}
           <motion.div 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-64 opacity-30 dark:opacity-20"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] opacity-40 dark:opacity-30"
             animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           >
-            <img 
-              src={dashboardImage} 
-              alt="Stahiki Dashboard"
-              className="w-full h-full object-cover rounded-xl shadow-2xl border border-border"
-            />
+            <div className="relative w-full h-full">
+              <img 
+                src={dashboardImage} 
+                alt="Stahiki Dashboard"
+                className="w-full h-full object-cover rounded-xl shadow-2xl border border-border"
+              />
+              
+              {/* Floating particles */}
+              <motion.div 
+                className="absolute -top-8 -left-8 w-16 h-16 bg-blue-500/20 rounded-full"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{ duration: 4, repeat: Infinity, delay: 0 }}
+              />
+              <motion.div 
+                className="absolute -top-4 -right-12 w-12 h-12 bg-purple-500/20 rounded-full"
+                animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4] }}
+                transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+              />
+              <motion.div 
+                className="absolute -bottom-6 -left-12 w-20 h-20 bg-pink-500/20 rounded-full"
+                animate={{ scale: [1, 1.1, 1], opacity: [0.6, 0.9, 0.6] }}
+                transition={{ duration: 6, repeat: Infinity, delay: 2 }}
+              />
+            </div>
           </motion.div>
-          
-          {/* Floating Elements */}
-          <motion.div 
-            className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-[hsl(var(--stahiki-primary))]/20 to-[hsl(var(--stahiki-secondary))]/20 rounded-full opacity-60"
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: -2 }}
-          />
-          <motion.div 
-            className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-br from-[hsl(var(--stahiki-accent))]/20 to-[hsl(var(--stahiki-primary))]/20 rounded-full opacity-60"
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: -4 }}
-          />
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-background">
+      {/* Stahiki Features */}
+      <section className="py-20 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
-              Build smarter systems, faster
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From concept to deployment in hours, not months. Our AI-native platform transforms how you create digital twins.
-            </p>
+            <h2 className="text-3xl font-bold mb-4">Stahiki features</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <motion.div 
-              className="text-center p-8 bg-muted/50 rounded-xl hover:shadow-lg transition-shadow duration-300"
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--stahiki-primary))] to-[hsl(var(--stahiki-secondary))] rounded-lg flex items-center justify-center mx-auto mb-6">
-                <Rocket className="text-white w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">
-                AI-generated simulations in minutes
-              </h3>
-              <p className="text-muted-foreground">
-                Leverage cutting-edge AI to automatically generate complex simulations from simple descriptions. No coding required.
-              </p>
-            </motion.div>
-            
-            {/* Feature 2 */}
-            <motion.div 
-              className="text-center p-8 bg-muted/50 rounded-xl hover:shadow-lg transition-shadow duration-300"
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--stahiki-secondary))] to-[hsl(var(--stahiki-accent))] rounded-lg flex items-center justify-center mx-auto mb-6">
-                <Brain className="text-white w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">
-                Drag & drop logic flows
-              </h3>
-              <p className="text-muted-foreground">
-                Intuitive visual workflow builder that lets you create complex automation logic without writing a single line of code.
-              </p>
-            </motion.div>
-            
-            {/* Feature 3 */}
-            <motion.div 
-              className="text-center p-8 bg-muted/50 rounded-xl hover:shadow-lg transition-shadow duration-300"
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--stahiki-accent))] to-[hsl(var(--stahiki-primary))] rounded-lg flex items-center justify-center mx-auto mb-6">
-                <ChartLine className="text-white w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">
-                Real-time data dashboards
-              </h3>
-              <p className="text-muted-foreground">
-                Monitor your digital twins with beautiful, real-time dashboards that provide actionable insights at a glance.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Visual Demo Section */}
-      <section className="py-20 bg-gradient-to-br from-[hsl(var(--stahiki-light))] to-background dark:from-muted/20 dark:to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
-              See Stahiki in action
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Experience the power of AI-native digital twin creation with our intuitive platform.
-            </p>
-          </div>
-          
-          <div className="relative max-w-5xl mx-auto">
-            {/* Main Dashboard Screenshot */}
-            <Card className="overflow-hidden shadow-2xl">
-              <div className="bg-muted/50 p-4 border-b border-border">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <div className="ml-4 text-sm text-muted-foreground">
-                    stahiki.com/dashboard
-                  </div>
+          {/* Interactive Demo */}
+          <div className="relative max-w-6xl mx-auto mb-16">
+            <Card className="overflow-hidden border border-border">
+              <div className="bg-card border-b border-border p-4">
+                <div className="flex items-center space-x-8">
+                  <Button variant="ghost" className="text-primary border-b-2 border-primary">
+                    <Code className="w-4 h-4 mr-2" />
+                    Code
+                  </Button>
+                  <Button variant="ghost" className="text-muted-foreground">
+                    <BarChart3 className="w-4 h-4 mr-2" />
+                    Plan
+                  </Button>
+                  <Button variant="ghost" className="text-muted-foreground">
+                    <Users className="w-4 h-4 mr-2" />
+                    Collaborate
+                  </Button>
+                  <Button variant="ghost" className="text-muted-foreground">
+                    <Zap className="w-4 h-4 mr-2" />
+                    Automate
+                  </Button>
+                  <Button variant="ghost" className="text-muted-foreground">
+                    <Shield className="w-4 h-4 mr-2" />
+                    Secure
+                  </Button>
                 </div>
               </div>
               
-              {/* Dashboard Content */}
-              <CardContent className="p-8 bg-gradient-to-br from-muted/50 to-muted/30">
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
-                  {/* Stats Cards */}
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-sm font-medium text-muted-foreground">Active Twins</h3>
-                        <ChartLine className="w-4 h-4 text-green-500" />
+              <CardContent className="p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4">
+                      Build code quickly and more securely with Stahiki Copilot embedded throughout your workflows.
+                    </h3>
+                    <p className="text-muted-foreground mb-6">
+                      AI-powered digital twin creation with intelligent code suggestions, automated workflows, and real-time collaboration.
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-3">
+                        <Check className="w-5 h-5 text-green-500" />
+                        <span>Work <strong>55% faster</strong> with AI assistance</span>
                       </div>
-                      <div className="text-3xl font-bold">24</div>
-                      <div className="text-sm text-green-500">+4 this week</div>
-                    </CardContent>
-                  </Card>
+                      <div className="flex items-center space-x-3">
+                        <Check className="w-5 h-5 text-green-500" />
+                        <span>Increase productivity with AI-powered coding assistance</span>
+                      </div>
+                    </div>
+                  </div>
                   
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-sm font-medium text-muted-foreground">Data Points</h3>
-                        <Database className="w-4 h-4 text-blue-500" />
-                      </div>
-                      <div className="text-3xl font-bold">1.2M</div>
-                      <div className="text-sm text-blue-500">+15% today</div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-sm font-medium text-muted-foreground">Processing Time</h3>
-                        <Clock className="w-4 h-4 text-purple-500" />
-                      </div>
-                      <div className="text-3xl font-bold">234ms</div>
-                      <div className="text-sm text-purple-500">-12ms avg</div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-sm font-medium text-muted-foreground">Accuracy</h3>
-                        <Target className="w-4 h-4 text-orange-500" />
-                      </div>
-                      <div className="text-3xl font-bold">98.7%</div>
-                      <div className="text-sm text-orange-500">+0.3% today</div>
-                    </CardContent>
-                  </Card>
-                </div>
-                
-                {/* Industry Modules */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mr-3">
-                          <Building className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                        </div>
-                        <h3 className="text-lg font-semibold">Building Design</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">Tools for architectural design and project management.</p>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center mr-3">
-                          <Zap className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-                        </div>
-                        <h3 className="text-lg font-semibold">Process Optimization</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">Features for optimizing industrial processes and monitoring equipment.</p>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center mr-3">
-                          <Leaf className="w-6 h-6 text-green-600 dark:text-green-400" />
-                        </div>
-                        <h3 className="text-lg font-semibold">Crop Simulation</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">Options for simulating crop growth and managing resources.</p>
-                    </CardContent>
-                  </Card>
+                  <div className="relative">
+                    <motion.div 
+                      className="bg-card border border-border rounded-lg p-6"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <img 
+                        src={dashboardImage} 
+                        alt="Code Demo"
+                        className="w-full h-64 object-cover rounded-md"
+                      />
+                    </motion.div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -323,108 +248,299 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Built With Section */}
-      <section className="py-20 bg-background">
+      {/* Trusted By Section */}
+      <section className="py-16 border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">
-              Built with industry-leading technologies
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Stahiki integrates with the tools you already know and trust
-            </p>
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold mb-8">Stahiki is used by</h2>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            <div className="flex items-center justify-center p-6 bg-muted/50 rounded-lg hover:shadow-md transition-shadow">
-              <div className="text-center">
-                <Network className="w-8 h-8 text-red-500 mb-2 mx-auto" />
-                <div className="text-sm font-medium">Node-RED</div>
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-center p-6 bg-muted/50 rounded-lg hover:shadow-md transition-shadow">
-              <div className="text-center">
-                <Layers className="w-8 h-8 text-orange-500 mb-2 mx-auto" />
-                <div className="text-sm font-medium">Eclipse Ditto</div>
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-center p-6 bg-muted/50 rounded-lg hover:shadow-md transition-shadow">
-              <div className="text-center">
-                <Gamepad2 className="w-8 h-8 text-blue-500 mb-2 mx-auto" />
-                <div className="text-sm font-medium">PlayCanvas</div>
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-center p-6 bg-muted/50 rounded-lg hover:shadow-md transition-shadow">
-              <div className="text-center">
-                <Brain className="w-8 h-8 text-green-500 mb-2 mx-auto" />
-                <div className="text-sm font-medium">GPT-4</div>
-              </div>
-            </div>
+          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+            {logos.map((logo, index) => (
+              <motion.div
+                key={logo}
+                className="text-muted-foreground font-semibold text-sm"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.6 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                {logo}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[hsl(var(--stahiki-primary))] to-[hsl(var(--stahiki-secondary))]">
+      {/* Feature Grid */}
+      <section className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Feature 1 */}
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center space-x-3">
+                <Zap className="w-8 h-8 text-yellow-500" />
+                <h3 className="text-2xl font-bold">Automate any workflow</h3>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                Optimize your process with simple and secured CI/CD.
+              </p>
+              <Card className="border border-border">
+                <CardContent className="p-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold">45,167 workflow runs</span>
+                      <span className="text-sm text-muted-foreground">Last 30 days</span>
+                    </div>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <div key={i} className="flex items-center justify-between py-2 border-b border-border last:border-0">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                          <span className="text-sm">Digital Twin Build #{5000 - i}</span>
+                        </div>
+                        <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                          <span>2m {15 + i}s</span>
+                          <span>{Math.floor(Math.random() * 10) + 1}m ago</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Feature 2 */}
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center space-x-3">
+                <Code className="w-8 h-8 text-blue-500" />
+                <h3 className="text-2xl font-bold">Get up and running in seconds</h3>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                Start building instantly with a comprehensive dev environment in the cloud.
+              </p>
+              <Card className="border border-border">
+                <CardContent className="p-6">
+                  <div className="space-y-4">
+                    <div className="bg-muted/50 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="font-semibold">Digital Twin Workspace</span>
+                        <Button size="sm" className="github-primary-button text-white">
+                          Create workspace on main
+                        </Button>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-card border border-border rounded-md p-3">
+                          <div className="text-sm font-medium mb-2">Code Editor</div>
+                          <div className="text-xs text-muted-foreground">twin-builder.ts</div>
+                        </div>
+                        <div className="bg-card border border-border rounded-md p-3">
+                          <div className="text-sm font-medium mb-2">Live Preview</div>
+                          <div className="text-xs text-muted-foreground">Real-time simulation</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Feature 3 */}
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center space-x-3">
+                <Globe className="w-8 h-8 text-purple-500" />
+                <h3 className="text-2xl font-bold">Build on the go</h3>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                Manage projects and chat with Stahiki Copilot from anywhere.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <Card className="border border-border">
+                  <CardContent className="p-4">
+                    <div className="text-sm font-medium mb-2">Mobile Dashboard</div>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2 text-xs">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>Farm Twin #1247</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-xs">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span>City Simulation</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card className="border border-border">
+                  <CardContent className="p-4">
+                    <div className="text-sm font-medium mb-2">AI Assistant</div>
+                    <div className="text-xs text-muted-foreground">
+                      "Help me optimize this twin..."
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </motion.div>
+
+            {/* Feature 4 */}
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center space-x-3">
+                <Network className="w-8 h-8 text-green-500" />
+                <h3 className="text-2xl font-bold">Integrate the tools you love</h3>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                Sync with 17,000+ integrations and a growing library of Copilot Extensions.
+              </p>
+              <div className="grid grid-cols-6 gap-3">
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <div key={i} className="aspect-square bg-muted border border-border rounded-lg flex items-center justify-center">
+                    <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-sm"></div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Security Section */}
+      <section className="py-20 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl font-bold mb-4">
+                Apply fixes in seconds. Spend less time fixing vulnerabilities and more time building features with Copilot Autofix.
+              </h2>
+              <p className="text-xl text-muted-foreground mb-8">
+                7x faster vulnerability fixes with Stahiki
+              </p>
+              <Button className="github-primary-button text-white">
+                Explore Stahiki Advanced Security
+              </Button>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
+            <Card className="border border-border">
+              <CardContent className="p-6">
+                <Shield className="w-8 h-8 text-blue-500 mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Solve security debt</h3>
+                <p className="text-sm text-muted-foreground">
+                  Leverage AI-assisted security campaigns to reduce application vulnerabilities and zero-day attacks.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border border-border">
+              <CardContent className="p-6">
+                <Database className="w-8 h-8 text-green-500 mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Dependencies you can depend on</h3>
+                <p className="text-sm text-muted-foreground">
+                  Update vulnerable dependencies with supported fixes for breaking changes.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border border-border">
+              <CardContent className="p-6">
+                <Clock className="w-8 h-8 text-purple-500 mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Your secrets, your business: protected</h3>
+                <p className="text-sm text-muted-foreground">
+                  Detect, prevent, and remediate leaked secrets across your organization.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Start building smarter systems with Stahiki
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of developers and enterprises who are already transforming their industries with AI-powered digital twins.
-          </p>
-          
-          <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div className="flex bg-white rounded-lg shadow-lg p-2 w-full max-w-md">
-              <Input 
-                type="email" 
-                placeholder="Enter your email address" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-gray-900 placeholder-gray-500"
-                required
-              />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl font-bold mb-6">
+              Millions of developers and businesses call Stahiki home
+            </h2>
+            <p className="text-xl text-muted-foreground mb-12">
+              Whether you're scaling your development process or just learning how to code, Stahiki is where you belong. Join the world's most widely adopted AI-powered developer platform to build the technologies that redefine what's possible.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex bg-card rounded-md border border-border overflow-hidden w-full max-w-md">
+                <Input 
+                  type="email" 
+                  placeholder="Enter your email address" 
+                  className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none"
+                />
+                <Button 
+                  type="submit"
+                  className="github-primary-button text-white px-6 rounded-none border-0"
+                >
+                  Sign up for Stahiki
+                </Button>
+              </div>
+              
               <Button 
-                type="submit"
-                className="bg-[hsl(var(--stahiki-primary))] hover:bg-[hsl(var(--stahiki-primary))]/90 px-6"
+                variant="outline" 
+                className="github-button border-border"
               >
-                Get Started
+                Try Stahiki Copilot
+                <Play className="ml-2 w-4 h-4" />
               </Button>
             </div>
-          </form>
-          
-          <p className="text-sm text-blue-100 mt-4">
-            No credit card required. Start building in minutes.
-          </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="border-t border-border py-12 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-[hsl(var(--stahiki-primary))] to-[hsl(var(--stahiki-secondary))] rounded-lg flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-sm"></div>
-              </div>
-              <span className="text-xl font-bold">Stahiki</span>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center space-x-4 mb-4 md:mb-0">
+              <Github className="w-6 h-6" />
+              <span className="text-sm text-muted-foreground">
+                © 2024 Stahiki, Inc.
+              </span>
             </div>
-            <p className="text-gray-400 mb-6">
-              Building the future of digital twin technology
-            </p>
-            <div className="flex justify-center space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Github className="w-5 h-5" />
-              </a>
+            
+            <div className="flex items-center space-x-6 text-sm text-muted-foreground">
+              <a href="#" className="hover:text-foreground transition-colors">Terms</a>
+              <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
+              <a href="#" className="hover:text-foreground transition-colors">Security</a>
+              <a href="#" className="hover:text-foreground transition-colors">Status</a>
+              <a href="#" className="hover:text-foreground transition-colors">Docs</a>
+              <a href="#" className="hover:text-foreground transition-colors">Contact Stahiki</a>
             </div>
           </div>
         </div>
