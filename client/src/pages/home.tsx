@@ -25,9 +25,10 @@ import {
   Clock,
   Target,
   Github,
-  Brain
+  Brain,
+  Activity
 } from "lucide-react";
-import dashboardImage from "@assets/pr1_1752699196392.png";
+
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -46,32 +47,33 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
-      <nav className="sticky top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b border-border">
+      <nav className="sticky top-0 w-full bg-background/90 backdrop-blur-md z-50 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-8">
-              <div className="flex items-center space-x-3">
-                <Github className="w-8 h-8" />
-                <span className="text-xl font-semibold">Stahiki</span>
+          <div className="flex justify-between items-center h-14 sm:h-16">
+            <div className="flex items-center space-x-4 sm:space-x-8">
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <Github className="w-6 h-6 sm:w-8 sm:h-8" />
+                <span className="text-lg sm:text-xl font-semibold">Stahiki</span>
               </div>
               
-              <div className="hidden md:flex items-center space-x-6 text-sm">
-                <a href="#features" className="text-foreground hover:text-primary transition-colors">Platform</a>
-                <a href="#industries" className="text-foreground hover:text-primary transition-colors">Industries</a>
-                <a href="#early-access" className="text-foreground hover:text-primary transition-colors">Early Access</a>
-                <a href="#" className="text-foreground hover:text-primary transition-colors">Blog</a>
+              <div className="hidden lg:flex items-center space-x-6 text-sm">
+                <a href="#features" className="text-foreground hover:text-primary transition-colors font-medium">Platform</a>
+                <a href="#industries" className="text-foreground hover:text-primary transition-colors font-medium">Industries</a>
+                <a href="#early-access" className="text-foreground hover:text-primary transition-colors font-medium">Early Access</a>
+                <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">Blog</a>
               </div>
             </div>
             
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-2 text-sm">
-                <Button variant="ghost" size="sm">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <div className="hidden sm:flex items-center space-x-2 text-sm">
+                <Button variant="ghost" size="sm" className="hidden md:inline-flex">
                   Contact
                 </Button>
-                <Button variant="ghost" size="sm">
-                  Request Demo
+                <Button variant="ghost" size="sm" className="text-xs sm:text-sm px-2 sm:px-3">
+                  Demo
                 </Button>
               </div>
+              
               <ThemeToggle />
             </div>
           </div>
@@ -79,11 +81,11 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-16 pb-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
+      <section className="relative pt-16 pb-24 lg:pb-32 overflow-hidden min-h-[80vh] flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="text-center max-w-5xl mx-auto">
             <motion.h1 
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 lg:mb-8 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -96,7 +98,7 @@ export default function Home() {
             </motion.h1>
             
             <motion.p 
-              className="text-xl sm:text-2xl text-muted-foreground mb-12 leading-relaxed"
+              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 lg:mb-12 leading-relaxed px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -105,32 +107,32 @@ export default function Home() {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 lg:mb-16 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="flex bg-card rounded-md border border-border overflow-hidden w-full max-w-md">
+              <div className="flex bg-card rounded-md border border-border overflow-hidden w-full sm:max-w-md">
                 <Input 
                   type="email" 
                   placeholder="Enter your email address" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none"
+                  className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none text-sm sm:text-base"
                   required
                 />
                 <Button 
                   type="submit"
-                  className="github-primary-button text-white px-6 rounded-none border-0"
+                  className="github-primary-button text-white px-4 sm:px-6 rounded-none border-0 text-sm sm:text-base whitespace-nowrap"
                   onClick={handleEmailSubmit}
                 >
-                  Join the Waitlist
+                  Join Waitlist
                 </Button>
               </div>
               
               <Button 
                 variant="outline" 
-                className="github-button border-border"
+                className="github-button border-border w-full sm:w-auto"
               >
                 Watch Demo
                 <Play className="ml-2 w-4 h-4" />
@@ -139,36 +141,59 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Floating UI Animation */}
-        <div className="absolute inset-0 pointer-events-none">
+        {/* 3D Factory Scene */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <motion.div 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] opacity-40 dark:opacity-30"
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[300px] sm:max-w-[500px] md:max-w-[700px] lg:max-w-[900px] h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] opacity-50 sm:opacity-60 dark:opacity-30 dark:sm:opacity-40"
+            animate={{ 
+              rotateY: [0, 360],
+              scale: [0.95, 1, 0.95] 
+            }}
+            transition={{ 
+              rotateY: { duration: 20, repeat: Infinity, ease: "linear" },
+              scale: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+            }}
           >
             <div className="relative w-full h-full">
-              <img 
-                src={dashboardImage} 
-                alt="Stahiki Dashboard"
-                className="w-full h-full object-cover rounded-xl shadow-2xl border border-border"
-              />
+              {/* 3D Factory Automation Scene */}
+              <div className="w-full h-full rounded-lg md:rounded-xl overflow-hidden shadow-xl md:shadow-2xl border border-border/10 md:border-border/20">
+                <iframe 
+                  src="https://sketchfab.com/models/fb74cae2824e46d198521ea5ae6d3ef1/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&ui_settings=0&preload=1&camera=0"
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allowFullScreen
+                  title="Futuristic Car Factory Production Line"
+                  loading="lazy"
+                ></iframe>
+              </div>
               
-              {/* Floating particles */}
+              {/* Floating AI indicators - hidden on mobile for cleaner look */}
               <motion.div 
-                className="absolute -top-8 -left-8 w-16 h-16 bg-blue-500/20 rounded-full"
-                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 0 }}
-              />
+                className="absolute top-2 left-2 md:top-4 md:left-4 hidden sm:flex items-center space-x-2 bg-blue-500/10 backdrop-blur-sm rounded-full px-2 py-1 md:px-3 md:py-1 border border-blue-500/20"
+                animate={{ opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                <Brain className="w-3 h-3 md:w-4 md:h-4 text-blue-500" />
+                <span className="text-xs font-medium text-blue-500 hidden md:inline">AI Processing</span>
+              </motion.div>
+              
               <motion.div 
-                className="absolute -top-4 -right-12 w-12 h-12 bg-purple-500/20 rounded-full"
-                animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4] }}
-                transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-              />
+                className="absolute top-2 right-2 md:top-4 md:right-4 hidden sm:flex items-center space-x-2 bg-green-500/10 backdrop-blur-sm rounded-full px-2 py-1 md:px-3 md:py-1 border border-green-500/20"
+                animate={{ opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+              >
+                <Activity className="w-3 h-3 md:w-4 md:h-4 text-green-500" />
+                <span className="text-xs font-medium text-green-500 hidden md:inline">Live Data</span>
+              </motion.div>
+              
               <motion.div 
-                className="absolute -bottom-6 -left-12 w-20 h-20 bg-pink-500/20 rounded-full"
-                animate={{ scale: [1, 1.1, 1], opacity: [0.6, 0.9, 0.6] }}
-                transition={{ duration: 6, repeat: Infinity, delay: 2 }}
-              />
+                className="absolute bottom-2 left-1/2 md:bottom-4 transform -translate-x-1/2 hidden sm:flex items-center space-x-2 bg-purple-500/10 backdrop-blur-sm rounded-full px-2 py-1 md:px-3 md:py-1 border border-purple-500/20"
+                animate={{ opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 3.5, repeat: Infinity, delay: 2 }}
+              >
+                <Zap className="w-3 h-3 md:w-4 md:h-4 text-purple-500" />
+                <span className="text-xs font-medium text-purple-500 hidden lg:inline">Digital Twin Active</span>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -247,11 +272,16 @@ export default function Home() {
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <img 
-                        src={dashboardImage} 
-                        alt="Code Demo"
-                        className="w-full h-64 object-cover rounded-md"
-                      />
+                      {/* Interactive 3D Demo */}
+                      <div className="w-full h-64 bg-muted rounded-md overflow-hidden">
+                        <iframe 
+                          src="https://sketchfab.com/models/1cfd1909311545af8d548ed5db650407/embed?autostart=1&ui_hint=0&ui_infos=0&ui_watermark=0&ui_settings=0&preload=1"
+                          className="w-full h-full"
+                          frameBorder="0"
+                          allowFullScreen
+                          title="Factory Conveyor Belt Demo"
+                        ></iframe>
+                      </div>
                     </motion.div>
                   </div>
                 </div>
@@ -271,7 +301,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {[
               { icon: Leaf, name: "Agriculture", desc: "Crop optimization & yield prediction" },
               { icon: Building, name: "Smart Cities", desc: "Urban planning & traffic flow" },
@@ -284,15 +314,16 @@ export default function Home() {
             ].map((industry, index) => (
               <motion.div
                 key={industry.name}
-                className="text-center p-6 rounded-lg bg-card border border-border hover:border-primary/30 transition-colors"
+                className="text-center p-4 sm:p-6 rounded-lg bg-card border border-border hover:border-primary/30 hover:shadow-md transition-all duration-200"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
               >
-                <industry.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
-                <h3 className="font-semibold mb-2">{industry.name}</h3>
-                <p className="text-sm text-muted-foreground">{industry.desc}</p>
+                <industry.icon className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2 sm:mb-3 text-primary" />
+                <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">{industry.name}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{industry.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -300,9 +331,9 @@ export default function Home() {
       </section>
 
       {/* Feature Grid */}
-      <section className="py-20 bg-background">
+      <section className="py-12 sm:py-16 lg:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
             {/* Feature 1 */}
             <motion.div 
               className="space-y-6"
@@ -568,7 +599,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-background">
+      <section className="py-12 sm:py-16 lg:py-20 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -576,23 +607,23 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
               Ready to transform how you build digital twins?
             </h2>
-            <p className="text-xl text-muted-foreground mb-12">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8 sm:mb-12 px-4">
               Join the waitlist for early access to Stahiki's AI-native platform. Whether you're optimizing smart cities, managing precision agriculture, or running complex manufacturing operations—the future of digital twins starts here.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <div className="flex bg-card rounded-md border border-border overflow-hidden w-full max-w-md">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 sm:mb-8 px-4">
+              <div className="flex bg-card rounded-md border border-border overflow-hidden w-full sm:max-w-md">
                 <Input 
                   type="email" 
                   placeholder="Enter your work email" 
-                  className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none"
+                  className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none text-sm sm:text-base"
                 />
                 <Button 
                   type="submit"
-                  className="github-primary-button text-white px-6 rounded-none border-0"
+                  className="github-primary-button text-white px-4 sm:px-6 rounded-none border-0 text-sm sm:text-base whitespace-nowrap"
                 >
                   Join Waitlist
                 </Button>
@@ -600,14 +631,14 @@ export default function Home() {
               
               <Button 
                 variant="outline" 
-                className="github-button border-border"
+                className="github-button border-border w-full sm:w-auto"
               >
                 Schedule Demo
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </div>
             
-            <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:space-x-8 text-sm text-muted-foreground px-4">
               <div className="flex items-center space-x-2">
                 <Check className="w-4 h-4 text-green-500" />
                 <span>No credit card required</span>
@@ -626,17 +657,17 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-12 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-4 mb-4 md:mb-0">
-              <Github className="w-6 h-6" />
+      <footer className="border-t border-border bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
+            <div className="flex items-center space-x-3">
+              <Github className="w-5 h-5 sm:w-6 sm:h-6" />
               <span className="text-sm text-muted-foreground">
                 © 2024 Stahiki, Inc.
               </span>
             </div>
             
-            <div className="flex items-center space-x-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm text-muted-foreground">
               <a href="#" className="hover:text-foreground transition-colors">Terms</a>
               <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
               <a href="#" className="hover:text-foreground transition-colors">Careers</a>
