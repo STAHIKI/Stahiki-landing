@@ -1,0 +1,112 @@
+💡 Goal:
+
+Create a premium, modern, clean landing page for Stahiki, your AI-native platform for digital twin creation — inspired by the GitHub landing page, with strong emphasis on:
+
+Visual simplicity
+
+Powerful one-liner
+
+A call-to-action input (email or “try the demo”)
+
+Floating UI mockups
+
+Dark/light mode contrast
+
+Fast-loading, responsive
+
+
+
+---
+
+🎨 Design Inspiration (GitHub.com)
+
+Key GitHub homepage elements to mimic:
+
+Element	Description
+
+🧠 Hero section	Large bold headline, subheadline, call-to-action input
+🎥 Background UI previews	App screenshots or animations fading in
+✨ Trust logos or badges	YC, open source, global partners
+📈 Feature columns	Clean 3-column grid showing benefits
+💻 Developer first section	“Built for scale. Built for devs.”
+🎯 Final CTA with signup	Sticky call-to-action banner at bottom
+
+
+
+---
+
+🧠 Prompt for AI / Copilot:
+
+> Build a full responsive landing page for "Stahiki", an AI-native platform that helps industries (agriculture, smart cities, manufacturing) build intelligent digital twins in hours.
+
+✨ The design and layout should match the style and visual hierarchy of GitHub's homepage — especially:
+
+A bold hero section with a large one-liner headline
+
+A call-to-action input (email/demo button)
+
+Animated or floating UI screenshots of a digital twin interface
+
+Clean typography (inter font or system font stack)
+
+Feature grid with icons
+
+Optional dark mode toggle
+
+Use Tailwind CSS (if using React/Vite)
+
+
+Page Content:
+
+Hero Text:
+Headline: "Build Intelligent Digital Twins with AI, Instantly"
+Subhead: "Stahiki is an AI-native platform that lets you simulate, monitor, and automate physical systems — from smart cities to farms — in hours, not months."
+
+CTA:
+→ Input for email and a button: “Request Early Access”
+
+Animated background:
+→ A blurred, floating panel showing a farm twin, logic builder, or node graph in mock form
+
+Feature Sections (3-column):
+
+🚀 AI-generated simulations in minutes
+
+🧠 Drag & drop logic flows
+
+📊 Real-time data dashboards
+
+
+Built With:
+Logos or tags: Node-RED, Eclipse Ditto, PlayCanvas, GPT-4
+
+Final CTA:
+“Start building smarter systems with Stahiki” + button
+
+Tech Requirements:
+
+Use React + Tailwind CSS
+
+Mobile responsive
+
+Include <meta> tags for SEO and social sharing
+
+Optional animation: fade-in sections on scroll using Framer Motion
+
+Export version as index.html if needed for static hosting
+
+
+
+
+
+---
+
+⚡ Bonus Add-Ons (Ask the AI or code yourself):
+
+🌙 Dark mode toggle
+
+🖼 Animated background of 3D farm twin rotating
+
+🧠 Live AI chat bubble (“Ask Stahiki anything”)
+
+📮 Connect to form backend (Formspree or Netlify Forms)
