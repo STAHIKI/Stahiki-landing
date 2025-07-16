@@ -24,7 +24,8 @@ import {
   Database,
   Clock,
   Target,
-  Github
+  Github,
+  Brain
 } from "lucide-react";
 import dashboardImage from "@assets/pr1_1752699196392.png";
 
@@ -55,20 +56,20 @@ export default function Home() {
               </div>
               
               <div className="hidden md:flex items-center space-x-6 text-sm">
-                <a href="#" className="text-foreground hover:text-primary transition-colors">Product</a>
-                <a href="#" className="text-foreground hover:text-primary transition-colors">Solutions</a>
-                <a href="#" className="text-foreground hover:text-primary transition-colors">Open Source</a>
-                <a href="#" className="text-foreground hover:text-primary transition-colors">Pricing</a>
+                <a href="#features" className="text-foreground hover:text-primary transition-colors">Platform</a>
+                <a href="#industries" className="text-foreground hover:text-primary transition-colors">Industries</a>
+                <a href="#early-access" className="text-foreground hover:text-primary transition-colors">Early Access</a>
+                <a href="#" className="text-foreground hover:text-primary transition-colors">Blog</a>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-2 text-sm">
                 <Button variant="ghost" size="sm">
-                  Search or jump to...
+                  Contact
                 </Button>
                 <Button variant="ghost" size="sm">
-                  Sign in
+                  Request Demo
                 </Button>
               </div>
               <ThemeToggle />
@@ -87,10 +88,11 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Build and ship digital twins on a single,{" "}
+              Build intelligent{" "}
               <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                collaborative platform
-              </span>
+                digital twins
+              </span>{" "}
+              with AI in minutes, not months
             </motion.h1>
             
             <motion.p 
@@ -99,7 +101,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Join the world's most widely adopted AI-powered developer platform.
+              Stahiki is the first AI-native platform that transforms complex systems into intelligent digital twins. From smart cities to precision agriculture—build, simulate, and optimize in real-time.
             </motion.p>
             
             <motion.div 
@@ -122,7 +124,7 @@ export default function Home() {
                   className="github-primary-button text-white px-6 rounded-none border-0"
                   onClick={handleEmailSubmit}
                 >
-                  Sign up for Stahiki
+                  Join the Waitlist
                 </Button>
               </div>
               
@@ -130,7 +132,7 @@ export default function Home() {
                 variant="outline" 
                 className="github-button border-border"
               >
-                Try Stahiki Copilot
+                Watch Demo
                 <Play className="ml-2 w-4 h-4" />
               </Button>
             </motion.div>
@@ -173,10 +175,17 @@ export default function Home() {
       </section>
 
       {/* Stahiki Features */}
-      <section className="py-20 bg-muted/50">
+      <section id="features" className="py-20 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Stahiki features</h2>
+            <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20 mb-6">
+              <span className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+              Coming Soon
+            </div>
+            <h2 className="text-3xl font-bold mb-4">The future of digital twin development</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Experience next-generation AI that understands your industry and builds intelligent simulations from simple descriptions.
+            </p>
           </div>
           
           {/* Interactive Demo */}
@@ -185,24 +194,24 @@ export default function Home() {
               <div className="bg-card border-b border-border p-4">
                 <div className="flex items-center space-x-8">
                   <Button variant="ghost" className="text-primary border-b-2 border-primary">
-                    <Code className="w-4 h-4 mr-2" />
-                    Code
+                    <Brain className="w-4 h-4 mr-2" />
+                    AI Engine
+                  </Button>
+                  <Button variant="ghost" className="text-muted-foreground">
+                    <Building className="w-4 h-4 mr-2" />
+                    Industries
+                  </Button>
+                  <Button variant="ghost" className="text-muted-foreground">
+                    <Network className="w-4 h-4 mr-2" />
+                    Simulation
                   </Button>
                   <Button variant="ghost" className="text-muted-foreground">
                     <BarChart3 className="w-4 h-4 mr-2" />
-                    Plan
-                  </Button>
-                  <Button variant="ghost" className="text-muted-foreground">
-                    <Users className="w-4 h-4 mr-2" />
-                    Collaborate
-                  </Button>
-                  <Button variant="ghost" className="text-muted-foreground">
-                    <Zap className="w-4 h-4 mr-2" />
-                    Automate
+                    Analytics
                   </Button>
                   <Button variant="ghost" className="text-muted-foreground">
                     <Shield className="w-4 h-4 mr-2" />
-                    Secure
+                    Security
                   </Button>
                 </div>
               </div>
@@ -211,19 +220,23 @@ export default function Home() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   <div>
                     <h3 className="text-2xl font-bold mb-4">
-                      Build code quickly and more securely with Stahiki Copilot embedded throughout your workflows.
+                      Describe your system, and our AI builds the digital twin instantly.
                     </h3>
                     <p className="text-muted-foreground mb-6">
-                      AI-powered digital twin creation with intelligent code suggestions, automated workflows, and real-time collaboration.
+                      Stahiki's AI engine understands complex systems across industries. Simply describe what you want to simulate—from wind farms to urban traffic—and watch your digital twin come to life.
                     </p>
                     <div className="space-y-4">
                       <div className="flex items-center space-x-3">
                         <Check className="w-5 h-5 text-green-500" />
-                        <span>Work <strong>55% faster</strong> with AI assistance</span>
+                        <span>Generate twins from <strong>natural language</strong> descriptions</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <Check className="w-5 h-5 text-green-500" />
-                        <span>Increase productivity with AI-powered coding assistance</span>
+                        <span>Real-time physics and behavioral simulation</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Check className="w-5 h-5 text-green-500" />
+                        <span>Connect to live data streams and IoT devices</span>
                       </div>
                     </div>
                   </div>
@@ -248,23 +261,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trusted By Section */}
-      <section className="py-16 border-y border-border">
+      {/* Industries Section */}
+      <section id="industries" className="py-16 border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold mb-8">Stahiki is used by</h2>
+            <h2 className="text-2xl font-bold mb-8">Built for industries that can't afford downtime</h2>
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+              From precision agriculture to smart cities, Stahiki's AI understands the unique challenges of critical infrastructure and complex systems.
+            </p>
           </div>
           
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            {logos.map((logo, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { icon: Leaf, name: "Agriculture", desc: "Crop optimization & yield prediction" },
+              { icon: Building, name: "Smart Cities", desc: "Urban planning & traffic flow" },
+              { icon: Cog, name: "Manufacturing", desc: "Production line optimization" },
+              { icon: Zap, name: "Energy", desc: "Grid management & renewables" },
+              { icon: Globe, name: "Logistics", desc: "Supply chain simulation" },
+              { icon: Shield, name: "Defense", desc: "Mission-critical systems" },
+              { icon: Database, name: "Data Centers", desc: "Infrastructure monitoring" },
+              { icon: Network, name: "Telecom", desc: "Network optimization" }
+            ].map((industry, index) => (
               <motion.div
-                key={logo}
-                className="text-muted-foreground font-semibold text-sm"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.6 }}
+                key={industry.name}
+                className="text-center p-6 rounded-lg bg-card border border-border hover:border-primary/30 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                {logo}
+                <industry.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
+                <h3 className="font-semibold mb-2">{industry.name}</h3>
+                <p className="text-sm text-muted-foreground">{industry.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -284,28 +312,34 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <div className="flex items-center space-x-3">
-                <Zap className="w-8 h-8 text-yellow-500" />
-                <h3 className="text-2xl font-bold">Automate any workflow</h3>
+                <Brain className="w-8 h-8 text-purple-500" />
+                <h3 className="text-2xl font-bold">AI that understands your domain</h3>
               </div>
               <p className="text-lg text-muted-foreground">
-                Optimize your process with simple and secured CI/CD.
+                Our foundation models are trained on industry-specific knowledge and physics principles.
               </p>
               <Card className="border border-border">
                 <CardContent className="p-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold">45,167 workflow runs</span>
-                      <span className="text-sm text-muted-foreground">Last 30 days</span>
+                      <span className="font-semibold">Active Simulations</span>
+                      <span className="text-sm text-muted-foreground">Early Access</span>
                     </div>
-                    {Array.from({ length: 5 }).map((_, i) => (
+                    {[
+                      { name: "Smart Farm Irrigation", status: "Running", progress: "87%" },
+                      { name: "City Traffic Flow", status: "Optimizing", progress: "92%" },
+                      { name: "Wind Farm Output", status: "Predicting", progress: "76%" },
+                      { name: "Supply Chain Route", status: "Analyzing", progress: "94%" },
+                      { name: "Factory Floor Layout", status: "Complete", progress: "100%" }
+                    ].map((sim, i) => (
                       <div key={i} className="flex items-center justify-between py-2 border-b border-border last:border-0">
                         <div className="flex items-center space-x-3">
-                          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                          <span className="text-sm">Digital Twin Build #{5000 - i}</span>
+                          <div className={`w-2 h-2 rounded-full ${sim.status === 'Complete' ? 'bg-green-500' : 'bg-blue-500 animate-pulse'}`}></div>
+                          <span className="text-sm">{sim.name}</span>
                         </div>
                         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                          <span>2m {15 + i}s</span>
-                          <span>{Math.floor(Math.random() * 10) + 1}m ago</span>
+                          <span>{sim.progress}</span>
+                          <span>{sim.status}</span>
                         </div>
                       </div>
                     ))}
@@ -323,30 +357,48 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <div className="flex items-center space-x-3">
-                <Code className="w-8 h-8 text-blue-500" />
-                <h3 className="text-2xl font-bold">Get up and running in seconds</h3>
+                <Clock className="w-8 h-8 text-blue-500" />
+                <h3 className="text-2xl font-bold">From idea to simulation in minutes</h3>
               </div>
               <p className="text-lg text-muted-foreground">
-                Start building instantly with a comprehensive dev environment in the cloud.
+                Skip the months of manual modeling. Describe your system and watch it come to life instantly.
               </p>
               <Card className="border border-border">
                 <CardContent className="p-6">
                   <div className="space-y-4">
                     <div className="bg-muted/50 rounded-lg p-4">
                       <div className="flex items-center justify-between mb-4">
-                        <span className="font-semibold">Digital Twin Workspace</span>
-                        <Button size="sm" className="github-primary-button text-white">
-                          Create workspace on main
-                        </Button>
+                        <span className="font-semibold">Twin Creation Timeline</span>
+                        <span className="text-sm text-green-500 font-medium">95% faster than traditional methods</span>
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-card border border-border rounded-md p-3">
-                          <div className="text-sm font-medium mb-2">Code Editor</div>
-                          <div className="text-xs text-muted-foreground">twin-builder.ts</div>
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span className="text-sm">Describe system requirements</span>
+                          </div>
+                          <span className="text-xs text-muted-foreground">30 seconds</span>
                         </div>
-                        <div className="bg-card border border-border rounded-md p-3">
-                          <div className="text-sm font-medium mb-2">Live Preview</div>
-                          <div className="text-xs text-muted-foreground">Real-time simulation</div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span className="text-sm">AI generates initial twin</span>
+                          </div>
+                          <span className="text-xs text-muted-foreground">2 minutes</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span className="text-sm">Connect real-world data</span>
+                          </div>
+                          <span className="text-xs text-muted-foreground">1 minute</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                            <span className="text-sm">Live simulation running</span>
+                          </div>
+                          <span className="text-xs text-green-500 font-medium">Ready!</span>
                         </div>
                       </div>
                     </div>
@@ -364,33 +416,42 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <div className="flex items-center space-x-3">
-                <Globe className="w-8 h-8 text-purple-500" />
-                <h3 className="text-2xl font-bold">Build on the go</h3>
+                <Target className="w-8 h-8 text-green-500" />
+                <h3 className="text-2xl font-bold">Predict, optimize, prevent</h3>
               </div>
               <p className="text-lg text-muted-foreground">
-                Manage projects and chat with Stahiki Copilot from anywhere.
+                Your digital twins don't just mirror reality—they predict the future and help you make better decisions.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 <Card className="border border-border">
                   <CardContent className="p-4">
-                    <div className="text-sm font-medium mb-2">Mobile Dashboard</div>
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="text-sm font-medium">Predictive Insights</div>
+                      <div className="text-xs text-primary bg-primary/10 px-2 py-1 rounded">Live</div>
+                    </div>
                     <div className="space-y-2">
-                      <div className="flex items-center space-x-2 text-xs">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span>Farm Twin #1247</span>
+                      <div className="flex items-center justify-between text-sm">
+                        <span>Equipment failure prediction</span>
+                        <span className="text-orange-500">72h early warning</span>
                       </div>
-                      <div className="flex items-center space-x-2 text-xs">
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span>City Simulation</span>
+                      <div className="flex items-center justify-between text-sm">
+                        <span>Optimal resource allocation</span>
+                        <span className="text-green-500">23% efficiency gain</span>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span>Performance bottlenecks</span>
+                        <span className="text-blue-500">Real-time detection</span>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
                 <Card className="border border-border">
                   <CardContent className="p-4">
-                    <div className="text-sm font-medium mb-2">AI Assistant</div>
+                    <div className="text-sm font-medium mb-2">What-if Scenarios</div>
                     <div className="text-xs text-muted-foreground">
-                      "Help me optimize this twin..."
+                      "What happens if we increase production by 30%?"<br/>
+                      "How will weather changes affect crop yield?"<br/>
+                      "What's the impact of adding a new production line?"
                     </div>
                   </CardContent>
                 </Card>
@@ -406,17 +467,33 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <div className="flex items-center space-x-3">
-                <Network className="w-8 h-8 text-green-500" />
-                <h3 className="text-2xl font-bold">Integrate the tools you love</h3>
+                <Network className="w-8 h-8 text-orange-500" />
+                <h3 className="text-2xl font-bold">Connect to your existing systems</h3>
               </div>
               <p className="text-lg text-muted-foreground">
-                Sync with 17,000+ integrations and a growing library of Copilot Extensions.
+                Seamlessly integrate with your current infrastructure, databases, and IoT devices.
               </p>
-              <div className="grid grid-cols-6 gap-3">
-                {Array.from({ length: 12 }).map((_, i) => (
-                  <div key={i} className="aspect-square bg-muted border border-border rounded-lg flex items-center justify-center">
-                    <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-sm"></div>
-                  </div>
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { name: "IoT Sensors", status: "Connected", count: "2.4k" },
+                  { name: "ERP Systems", status: "Syncing", count: "12" },
+                  { name: "Databases", status: "Live", count: "8" },
+                  { name: "APIs", status: "Active", count: "156" },
+                  { name: "Edge Devices", status: "Monitoring", count: "890" },
+                  { name: "Cloud Services", status: "Integrated", count: "24" }
+                ].map((integration, i) => (
+                  <Card key={i} className="border border-border">
+                    <CardContent className="p-3">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-xs font-medium">{integration.name}</span>
+                        <div className={`w-2 h-2 rounded-full ${integration.status === 'Connected' || integration.status === 'Live' || integration.status === 'Integrated' ? 'bg-green-500' : 'bg-blue-500 animate-pulse'}`}></div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-muted-foreground">{integration.status}</span>
+                        <span className="text-xs font-medium">{integration.count}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </motion.div>
@@ -424,8 +501,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Security Section */}
-      <section className="py-20 bg-muted/50">
+      {/* Early Access Section */}
+      <section id="early-access" className="py-20 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.div
@@ -434,46 +511,56 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
+              <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20 mb-6">
+                <Star className="w-4 h-4 mr-2" />
+                Limited Early Access
+              </div>
               <h2 className="text-3xl font-bold mb-4">
-                Apply fixes in seconds. Spend less time fixing vulnerabilities and more time building features with Copilot Autofix.
+                Join the future of digital twin development
               </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                7x faster vulnerability fixes with Stahiki
+              <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+                We're working with select partners to revolutionize how complex systems are simulated and optimized. Be among the first to experience AI-native digital twins.
               </p>
-              <Button className="github-primary-button text-white">
-                Explore Stahiki Advanced Security
-              </Button>
             </motion.div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
             <Card className="border border-border">
               <CardContent className="p-6">
-                <Shield className="w-8 h-8 text-blue-500 mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Solve security debt</h3>
-                <p className="text-sm text-muted-foreground">
-                  Leverage AI-assisted security campaigns to reduce application vulnerabilities and zero-day attacks.
+                <Users className="w-8 h-8 text-blue-500 mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Exclusive Access</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Work directly with our team to build your first AI-generated digital twin.
                 </p>
+                <div className="text-xs text-primary bg-primary/10 px-2 py-1 rounded inline-block">
+                  Rolling invitations
+                </div>
               </CardContent>
             </Card>
 
             <Card className="border border-border">
               <CardContent className="p-6">
-                <Database className="w-8 h-8 text-green-500 mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Dependencies you can depend on</h3>
-                <p className="text-sm text-muted-foreground">
-                  Update vulnerable dependencies with supported fixes for breaking changes.
+                <Shield className="w-8 h-8 text-green-500 mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Enterprise-grade Security</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Your data and models are protected with SOC2 compliance and end-to-end encryption.
                 </p>
+                <div className="text-xs text-green-500 bg-green-500/10 px-2 py-1 rounded inline-block">
+                  Production ready
+                </div>
               </CardContent>
             </Card>
 
             <Card className="border border-border">
               <CardContent className="p-6">
-                <Clock className="w-8 h-8 text-purple-500 mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Your secrets, your business: protected</h3>
-                <p className="text-sm text-muted-foreground">
-                  Detect, prevent, and remediate leaked secrets across your organization.
+                <Zap className="w-8 h-8 text-purple-500 mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Shape the Product</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Your feedback directly influences our roadmap and feature development.
                 </p>
+                <div className="text-xs text-purple-500 bg-purple-500/10 px-2 py-1 rounded inline-block">
+                  Partner program
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -490,24 +577,24 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold mb-6">
-              Millions of developers and businesses call Stahiki home
+              Ready to transform how you build digital twins?
             </h2>
             <p className="text-xl text-muted-foreground mb-12">
-              Whether you're scaling your development process or just learning how to code, Stahiki is where you belong. Join the world's most widely adopted AI-powered developer platform to build the technologies that redefine what's possible.
+              Join the waitlist for early access to Stahiki's AI-native platform. Whether you're optimizing smart cities, managing precision agriculture, or running complex manufacturing operations—the future of digital twins starts here.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <div className="flex bg-card rounded-md border border-border overflow-hidden w-full max-w-md">
                 <Input 
                   type="email" 
-                  placeholder="Enter your email address" 
+                  placeholder="Enter your work email" 
                   className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none"
                 />
                 <Button 
                   type="submit"
                   className="github-primary-button text-white px-6 rounded-none border-0"
                 >
-                  Sign up for Stahiki
+                  Join Waitlist
                 </Button>
               </div>
               
@@ -515,9 +602,24 @@ export default function Home() {
                 variant="outline" 
                 className="github-button border-border"
               >
-                Try Stahiki Copilot
-                <Play className="ml-2 w-4 h-4" />
+                Schedule Demo
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
+            </div>
+            
+            <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">
+              <div className="flex items-center space-x-2">
+                <Check className="w-4 h-4 text-green-500" />
+                <span>No credit card required</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Check className="w-4 h-4 text-green-500" />
+                <span>Early access program</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Check className="w-4 h-4 text-green-500" />
+                <span>Direct founder access</span>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -537,10 +639,10 @@ export default function Home() {
             <div className="flex items-center space-x-6 text-sm text-muted-foreground">
               <a href="#" className="hover:text-foreground transition-colors">Terms</a>
               <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Security</a>
-              <a href="#" className="hover:text-foreground transition-colors">Status</a>
-              <a href="#" className="hover:text-foreground transition-colors">Docs</a>
-              <a href="#" className="hover:text-foreground transition-colors">Contact Stahiki</a>
+              <a href="#" className="hover:text-foreground transition-colors">Careers</a>
+              <a href="#" className="hover:text-foreground transition-colors">Blog</a>
+              <a href="#" className="hover:text-foreground transition-colors">Press</a>
+              <a href="#" className="hover:text-foreground transition-colors">Contact</a>
             </div>
           </div>
         </div>

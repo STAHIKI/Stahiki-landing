@@ -2,7 +2,7 @@
 
 ## Overview
 
-Stahiki is a modern web application for creating intelligent digital twins using AI. The platform is designed to help industries like agriculture, smart cities, and manufacturing build and deploy digital twin solutions quickly. The application follows a full-stack architecture with a React frontend and Express backend, utilizing modern web technologies and design patterns.
+Stahiki is a modern web application for creating intelligent digital twins using AI. Positioned as a stealth-mode startup, the platform is designed to help industries like agriculture, smart cities, and manufacturing build and deploy AI-native digital twin solutions. The application follows a full-stack architecture with a React frontend and Express backend, utilizing modern web technologies and design patterns. The landing page showcases early access signup with startup-focused messaging.
 
 ## User Preferences
 
@@ -35,10 +35,11 @@ Design preference: Exact GitHub replica - colors, themes, animations, fonts, and
 ## Key Components
 
 ### Frontend Components
-- **Landing Page**: GitHub-inspired hero section with email capture
+- **Landing Page**: Exact GitHub design replica with startup-focused content and early access signup
 - **UI Components**: Comprehensive set of reusable components (buttons, cards, forms, etc.)
 - **Theme Provider**: Dark/light mode switching with localStorage persistence
 - **Toast System**: User notifications and feedback
+- **Startup Messaging**: Stealth-mode positioning with "Coming Soon" and waitlist features
 
 ### Backend Components
 - **Express Server**: RESTful API with middleware for logging and error handling
