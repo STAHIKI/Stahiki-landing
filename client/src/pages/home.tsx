@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { StahikiLogo } from "@/components/ui/stahiki-logo";
 import { 
   ArrowRight,
   Code,
@@ -35,7 +36,22 @@ export default function Home() {
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Email submitted:", email);
+    if (email) {
+      // Store email in localStorage for now - in production this would go to a backend
+      localStorage.setItem('stahiki_waitlist_email', email);
+      alert(`Thank you for your interest! We've added ${email} to our early access waitlist. You'll hear from us soon!`);
+      setEmail("");
+    }
+  };
+
+  const handleDemoRequest = () => {
+    // In production, this would open a calendar booking system
+    window.open('mailto:demo@stahiki.com?subject=Demo Request&body=Hi, I would like to schedule a demo of Stahiki\'s AI-native digital twin platform.', '_blank');
+  };
+
+  const handleContactClick = () => {
+    // In production, this would open a contact form or redirect to contact page
+    window.open('mailto:contact@stahiki.com?subject=General Inquiry&body=Hi, I have a question about Stahiki\'s platform.', '_blank');
   };
 
   const logos = [
@@ -52,24 +68,24 @@ export default function Home() {
           <div className="flex justify-between items-center h-14 sm:h-16">
             <div className="flex items-center space-x-4 sm:space-x-8">
               <div className="flex items-center space-x-2 sm:space-x-3">
-                <Github className="w-6 h-6 sm:w-8 sm:h-8" />
+                <StahikiLogo className="w-6 h-6 sm:w-8 sm:h-8" />
                 <span className="text-lg sm:text-xl font-semibold">Stahiki</span>
               </div>
               
               <div className="hidden lg:flex items-center space-x-6 text-sm">
-                <a href="#features" className="text-foreground hover:text-primary transition-colors font-medium">Platform</a>
-                <a href="#industries" className="text-foreground hover:text-primary transition-colors font-medium">Industries</a>
-                <a href="#early-access" className="text-foreground hover:text-primary transition-colors font-medium">Early Access</a>
-                <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">Blog</a>
+                <a href="#features" className="text-foreground hover:text-primary transition-colors font-medium" onClick={(e) => { e.preventDefault(); document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }); }}>Platform</a>
+                <a href="#industries" className="text-foreground hover:text-primary transition-colors font-medium" onClick={(e) => { e.preventDefault(); document.getElementById('industries')?.scrollIntoView({ behavior: 'smooth' }); }}>Industries</a>
+                <a href="#early-access" className="text-foreground hover:text-primary transition-colors font-medium" onClick={(e) => { e.preventDefault(); document.getElementById('early-access')?.scrollIntoView({ behavior: 'smooth' }); }}>Early Access</a>
+                <a href="#" className="text-foreground hover:text-primary transition-colors font-medium" onClick={(e) => { e.preventDefault(); alert('Blog coming soon! Stay tuned for insights on AI and digital twins.'); }}>Blog</a>
               </div>
             </div>
             
             <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="hidden sm:flex items-center space-x-2 text-sm">
-                <Button variant="ghost" size="sm" className="hidden md:inline-flex">
+                <Button variant="ghost" size="sm" className="hidden md:inline-flex" onClick={handleContactClick}>
                   Contact
                 </Button>
-                <Button variant="ghost" size="sm" className="text-xs sm:text-sm px-2 sm:px-3">
+                <Button variant="ghost" size="sm" className="text-xs sm:text-sm px-2 sm:px-3" onClick={handleDemoRequest}>
                   Demo
                 </Button>
               </div>
@@ -106,7 +122,8 @@ export default function Home() {
               Stahiki is the first AI-native platform that transforms complex systems into intelligent digital twins. From smart cities to precision agriculture—build, simulate, and optimize in real-time.
             </motion.p>
             
-            <motion.div 
+            <motion.form 
+              onSubmit={handleEmailSubmit}
               className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 lg:mb-16 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -124,20 +141,21 @@ export default function Home() {
                 <Button 
                   type="submit"
                   className="github-primary-button text-white px-4 sm:px-6 rounded-none border-0 text-sm sm:text-base whitespace-nowrap"
-                  onClick={handleEmailSubmit}
                 >
                   Join Waitlist
                 </Button>
               </div>
               
               <Button 
+                type="button"
                 variant="outline" 
                 className="github-button border-border w-full sm:w-auto"
+                onClick={handleDemoRequest}
               >
                 Watch Demo
                 <Play className="ml-2 w-4 h-4" />
               </Button>
-            </motion.div>
+            </motion.form>
           </div>
         </div>
         
@@ -599,7 +617,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-background">
+      <section id="early-access" className="py-12 sm:py-16 lg:py-20 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -614,11 +632,14 @@ export default function Home() {
               Join the waitlist for early access to Stahiki's AI-native platform. Whether you're optimizing smart cities, managing precision agriculture, or running complex manufacturing operations—the future of digital twins starts here.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 sm:mb-8 px-4">
+            <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 sm:mb-8 px-4">
               <div className="flex bg-card rounded-md border border-border overflow-hidden w-full sm:max-w-md">
                 <Input 
                   type="email" 
                   placeholder="Enter your work email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                   className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 rounded-none text-sm sm:text-base"
                 />
                 <Button 
@@ -632,11 +653,13 @@ export default function Home() {
               <Button 
                 variant="outline" 
                 className="github-button border-border w-full sm:w-auto"
+                onClick={handleDemoRequest}
+                type="button"
               >
                 Schedule Demo
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
-            </div>
+            </form>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:space-x-8 text-sm text-muted-foreground px-4">
               <div className="flex items-center space-x-2">
@@ -661,19 +684,19 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
             <div className="flex items-center space-x-3">
-              <Github className="w-5 h-5 sm:w-6 sm:h-6" />
+              <StahikiLogo className="w-5 h-5 sm:w-6 sm:h-6" />
               <span className="text-sm text-muted-foreground">
                 © 2024 Stahiki, Inc.
               </span>
             </div>
             
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-              <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Careers</a>
-              <a href="#" className="hover:text-foreground transition-colors">Blog</a>
-              <a href="#" className="hover:text-foreground transition-colors">Press</a>
-              <a href="#" className="hover:text-foreground transition-colors">Contact</a>
+              <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Terms of Service page coming soon!'); }}>Terms</a>
+              <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Privacy Policy page coming soon!'); }}>Privacy</a>
+              <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Careers page coming soon! Join our team building the future of digital twins.'); }}>Careers</a>
+              <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Blog coming soon! Stay tuned for insights on AI and digital twins.'); }}>Blog</a>
+              <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Press kit coming soon!'); }}>Press</a>
+              <a href="#" className="hover:text-foreground transition-colors" onClick={handleContactClick}>Contact</a>
             </div>
           </div>
         </div>

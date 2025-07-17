@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AlertCircle, ArrowLeft, Home } from "lucide-react";
 import { motion } from "framer-motion";
+import { StahikiLogo } from "@/components/ui/stahiki-logo";
 
 export default function NotFound() {
   return (
@@ -23,7 +24,10 @@ export default function NotFound() {
               <AlertCircle className="h-12 w-12 text-destructive" />
             </motion.div>
             
-            <h1 className="text-2xl font-bold text-foreground mb-2">404 - Page Not Found</h1>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <StahikiLogo className="w-6 h-6" />
+              <h1 className="text-2xl font-bold text-foreground">404 - Page Not Found</h1>
+            </div>
             <p className="text-muted-foreground mb-6">
               The page you're looking for doesn't exist or has been moved.
             </p>
